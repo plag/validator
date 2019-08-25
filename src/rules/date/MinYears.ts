@@ -1,7 +1,8 @@
 import { Rule } from '../../types/Rule';
 import { ErrorText } from '../../types/ErrorText';
 import { BaseRule } from '../../BaseRule';
-import { differenceInYears, parse } from 'date-fns'
+import differenceInYears from 'date-fns/differenceInYears'
+import parse from 'date-fns/parse'
 
 const FORMAT = 'yyyy-MM-dd';
 
