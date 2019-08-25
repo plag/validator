@@ -1,7 +1,9 @@
 import { Rule } from '../../types/Rule';
 import { ErrorText } from '../../types/ErrorText';
 import { BaseRule } from '../../BaseRule';
-import { differenceInYears } from 'date-fns'
+import { differenceInYears, parse } from 'date-fns'
+
+const FORMAT = 'yyyy-MM-dd';
 
 export class MinYears extends BaseRule implements Rule {
   private minYears: number;
@@ -12,9 +14,10 @@ export class MinYears extends BaseRule implements Rule {
     this.minYears = years;
   }
 
-  public validate(value: Date): boolean {
+  public validate(value: string): boolean {
+    const date = parse(value, FORMAT, new Date());
 
-    return differenceInYears(new Date(), value) >= this.minYears;
+    return differenceInYears(new Date(), date) >= this.minYears;
   }
 }
 
